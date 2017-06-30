@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -31,13 +32,14 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CategoryRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category = $request->all();
         Category::create($category);
+        $request->session()->flash('message', 'Categoria cadastrada com sucesso!');
         return redirect()->route('categories.index');
     }
 
@@ -56,18 +58,19 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CategoryRequest $request
      * @param Category $category
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $data = $request->all();
         $category->fill($data);
         $category->save();
-
-        return redirect()->route('categories.index');
+        $url = $request->get('redirect_to', route('categories.index'));
+        $request->session()->flash('message', 'Categoria alterada com sucesso!');
+        return redirect()->to($url);
     }
 
     /**
@@ -80,7 +83,8 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        \Session::flash('message', 'Categoria excluida com sucesso!');
+        return redirect()->to(\URL::previous());
 
     }
 }

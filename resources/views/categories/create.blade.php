@@ -5,18 +5,17 @@
     <div class="container">
         <div class="row">
             <h3>Nova categorias</h3>
-        </div>
-        {!! Form::open(['route' => 'categories.store', 'class' => 'form']) !!}
-        <div class="form-group">
-            {!! Form::label('name', 'Nome') !!}
-            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-        </div>
+            {!! Alert::warning('Ola Mundo') !!}
+            {!! Form::open(['route' => 'categories.store', 'class' => 'form']) !!}
 
-        <div class="form-group">
-            {!! Form::submit('Criar Categoria', ['class' => 'btn btn-primary']) !!}
-        </div>
+            @include('categories._form')
 
-        {!! Form::close() !!}
+            {!! Html::openFormGroup() !!}
+                {!! Button::primary('Criar Categoria')->submit() !!}
+            {!! Html::closeFormGroup() !!}
+
+            {!! Form::close() !!}
+        </div>
     </div>
 
 @endsection
