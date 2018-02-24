@@ -41,6 +41,7 @@ class BooksController extends Controller
         $book['user_id'] = (string)auth()->user()->id;
 
         Book::create($book);
+        $request->session()->flash('message', 'Livro criado com sucesso!');
         return redirect()->route('books.index');
     }
 
@@ -80,7 +81,9 @@ class BooksController extends Controller
         $book->fill($data);
         $book->save();
 
-        return redirect()->route('books.index');
+        $url = $request->get('redirect_to', route('categories.index'));
+        $request->session()->flash('message', 'Livro editado com sucesso!');
+        return redirect()->to($url);
     }
 
     /**
@@ -92,6 +95,7 @@ class BooksController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
-        return redirect()->route('books.index');
+        \Session::flash('message', 'Livro excluido com sucesso!');
+        return redirect()->to(\URL::previous());
     }
 }

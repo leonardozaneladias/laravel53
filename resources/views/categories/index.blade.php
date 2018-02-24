@@ -12,6 +12,7 @@
             {!!
                 Table::withContents($categories)
                 ->callback('Ações', function ($field, $category){
+
                     $linkEdit = route('categories.edit', ['category' => $category->id]);
                     $linkDestroy = route('categories.destroy', ['category' => $category->id]);
 

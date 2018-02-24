@@ -146,6 +146,8 @@ return [
         'title'                 => 'título',
         'username'              => 'usuário',
         'year'                  => 'ano',
+        'subtitle'              => 'sub titulo',
+        'price'                => 'valor',
     ],
 
 ];

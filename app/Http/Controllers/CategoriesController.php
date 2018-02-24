@@ -40,7 +40,8 @@ class CategoriesController extends Controller
         $category = $request->all();
         Category::create($category);
         $request->session()->flash('message', 'Categoria cadastrada com sucesso!');
-        return redirect()->route('categories.index');
+        $url = $request->get('redirect_to', route('categories.index'));
+        return redirect()->to($url);
     }
 
     /**

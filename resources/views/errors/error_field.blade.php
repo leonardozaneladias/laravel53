@@ -1,3 +1,3 @@
 <span class="help-block">
-    <strong>{{$errors->first('name')}}</strong>
+    <strong>{{$errors->first($field)}}</strong>
 </span>

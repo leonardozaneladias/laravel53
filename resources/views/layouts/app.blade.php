@@ -29,7 +29,11 @@
                  [
                      'link' => route('categories.index'),
                      'title' => 'Categorias'
-                 ]
+                 ],
+                 [
+                     'link' => route('books.index'),
+                     'title' => 'Livros'
+                 ],
              ]);
              $loguot = Navigation::links([
                  [
