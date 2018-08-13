@@ -2,9 +2,11 @@
 
 namespace CodePub\Http\Requests;
 
+use CodePub\Book;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class CategoryRequest extends FormRequest
+class BookCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,6 +16,7 @@ class CategoryRequest extends FormRequest
     public function authorize()
     {
         return true;
+
     }
 
     /**
@@ -23,9 +26,10 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->route('category');
         return [
-            'name' => "required|max:255|unique:categories,name,{$id}",
+            'title' => 'required|max:255',
+            'subtitle' => 'required|max:255',
+            'price' => 'required|numeric',
         ];
     }
 }

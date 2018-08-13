@@ -5,11 +5,10 @@ namespace CodePub\Repositories;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
- * Interface CategoryRepository.
- *
+ * Interface UserRepository
  * @package namespace CodePub\Repositories;
  */
-interface CategoryRepository extends RepositoryInterface
+interface UserRepository extends RepositoryInterface
 {
     //
 }

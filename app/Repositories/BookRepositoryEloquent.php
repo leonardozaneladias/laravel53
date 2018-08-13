@@ -4,17 +4,20 @@ namespace CodePub\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CodePub\Models\Category;
+use CodePub\Repositories\BookRepository;
+use CodePub\Models\Book;
+use CodePub\Validators\BookValidator;
 
 /**
- * Class CategoryRepositoryEloquent.
- *
+ * Class BookRepositoryEloquent
  * @package namespace CodePub\Repositories;
  */
-class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepository
+class BookRepositoryEloquent extends BaseRepository implements BookRepository
 {
+
     protected $fieldSearchable = [
-        'name' => 'like'
+        'title' => 'like',
+        //'author.name' => 'like',
     ];
     /**
      * Specify Model class name
@@ -23,7 +26,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
      */
     public function model()
     {
-        return Category::class;
+        return Book::class;
     }
 
     
@@ -35,5 +38,4 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
 }

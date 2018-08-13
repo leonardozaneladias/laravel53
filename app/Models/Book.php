@@ -1,6 +1,6 @@
 <?php
 
-namespace CodePub;
+namespace CodePub\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model implements TableInterface
 {
     protected $fillable = [
-        'user_id',
         'title',
         'subtitle',
         'price',
+        'author_id',
     ];
+
+
+    public function author(){
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * A list of headers to be used when a table is displayed
@@ -23,9 +28,9 @@ class Book extends Model implements TableInterface
     {
         return [
             '#',
-            'Titulo',
-            'Sub Titulo',
-            'Valor',
+            'Título',
+            'Author',
+            'Preço',
         ];
     }
 
@@ -41,11 +46,11 @@ class Book extends Model implements TableInterface
         switch ($header){
             case '#':
                 return $this->id;
-            case 'Titulo':
+            case 'Título':
                 return $this->title;
-            case 'Sub Titulo':
-                return $this->subtitle;
-            case 'Valor':
+            case 'Author':
+                return $this->author->name;
+            case 'Preço':
                 return $this->price;
 
         }

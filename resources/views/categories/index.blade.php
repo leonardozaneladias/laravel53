@@ -8,6 +8,14 @@
 
             <h3>Listagem de categorias</h3>
             {!! Button::primary('Nova categoria')->asLinkTo(route('categories.create')) !!}
+            <br>
+            <div class="row">
+                {!! Form::model([], ['class' => 'form-inline', 'method' => 'GET']) !!}
+                {!! Form::label('search', 'Pesquisar por título') !!}
+                {!! Form::text('search', null, ['class' => 'form-control']) !!}
+                {!! Button::primary('Buscar') !!}
+                {!! Form::close() !!}
+            </div>
             <hr>
             {!!
                 Table::withContents($categories)

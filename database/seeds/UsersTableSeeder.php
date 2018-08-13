@@ -11,8 +11,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\User::class, 1)->create([
+        factory(\CodePub\Models\User::class, 1)->create([
             'email' => 'admin@laravel53.com.br'
+        ]);
+
+        factory(\CodePub\Models\User::class, 1)->create([
+            'email' => 'admin1@laravel53.com.br'
         ]);
     }
 }
