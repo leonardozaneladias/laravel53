@@ -23,6 +23,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        //$categories = Category::withTrashed()->paginate(10); Vericar excluidos
         $categories = $this->repository->paginate(10);
         return view('categories.index', compact('categories'));
     }

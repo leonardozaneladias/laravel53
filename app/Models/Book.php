@@ -3,10 +3,17 @@
 namespace CodePub\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
+use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model implements TableInterface
 {
+    use FormAccessible;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'title',
         'subtitle',
@@ -14,9 +21,16 @@ class Book extends Model implements TableInterface
         'author_id',
     ];
 
-
     public function author(){
         return $this->belongsTo(User::class);
+    }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class)->withTrashed();
+    }
+
+    public function formCategoriesAttribute(){
+        return $this->categories()->pluck('id')->all();
     }
 
     /**
@@ -30,6 +44,7 @@ class Book extends Model implements TableInterface
             '#',
             'Título',
             'Author',
+            'Categorias',
             'Preço',
         ];
     }
@@ -52,6 +67,8 @@ class Book extends Model implements TableInterface
                 return $this->author->name;
             case 'Preço':
                 return $this->price;
+            case 'Categorias':
+                return $this->categories->implode('name_trashed', ", ");
 
         }
     }

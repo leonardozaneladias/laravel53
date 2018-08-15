@@ -7,7 +7,9 @@ use CodePub\Criteria\FindByAuthorCriteria;
 use CodePub\Criteria\FindByTitleCriteria;
 use CodePub\Http\Requests\BookCreateRequest;
 use CodePub\Http\Requests\BookUpdateRequest;
+use CodePub\Models\Category;
 use CodePub\Repositories\BookRepository;
+use CodePub\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -16,13 +18,18 @@ class BooksController extends Controller
      * @var BookRepository
      */
     private $repository;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
     /**
      * BooksController constructor.
      */
-    public function __construct(BookRepository $repository)
+    public function __construct(BookRepository $repository, CategoryRepository $categoryRepository)
     {
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -44,7 +51,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $categories = $this->categoryRepository->lists('name', 'id'); //pluck
+        return view('books.create', compact('categories'));
     }
 
     /**
@@ -82,8 +90,12 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
+
+        //$categories = Category::withTrashed()->pluck('name', 'id'); //pluck
         $book = $this->repository->find($id);
-        return view('books.edit', compact('book'));
+        $this->categoryRepository->withTrashed();
+        $categories = $this->categoryRepository->listsWithMutators('name_trashed', 'id'); //pluck
+        return view('books.edit', compact('book', 'categories'));
     }
 
     /**

@@ -147,7 +147,9 @@ return [
         'username'              => 'usuário',
         'year'                  => 'ano',
         'subtitle'              => 'sub titulo',
-        'price'                => 'valor',
+        'price'                 => 'valor',
+        'categories'            => 'categoria',
+        'categories_*'          => 'categoria :num',
     ],
 
 ];

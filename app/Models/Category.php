@@ -4,12 +4,25 @@ namespace CodePub\Models;
 
 use Bootstrapper\Interfaces\TableInterface;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model implements TableInterface
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'name'
     ];
+
+    public function books(){
+        return $this->belongsToMany(Book::class);
+    }
+
+    public function getNameTrashedAttribute(){
+        return $this->trashed() ? "{$this->name} (Inativo)" : $this->name;
+    }
 
     /**
      * A list of headers to be used when a table is displayed

@@ -5,6 +5,8 @@
     <div class="container">
 
         <div class="row">
+            <h3>Editar Livro</h3>
+            <p>Autor: <strong>{{$book->author->name}}</strong></p>
 
         </div>
 
