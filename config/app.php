@@ -168,7 +168,11 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
+        Nwidart\Modules\LaravelModulesServiceProvider::class,
         //
+
+        //Modules
+        \CodeEduBook\Providers\CodeEduBookServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -179,7 +183,9 @@ return [
         CodePub\Providers\EventServiceProvider::class,
         CodePub\Providers\RouteServiceProvider::class,
         CodePub\Providers\RepositoryServiceProvider::class,
-        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class
+
+
 
     ],
 
@@ -230,6 +236,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        'Module' => \Nwidart\Modules\Facades\Module::class,
 
         //Bootstrapper FACADES
         'Accordion' => Bootstrapper\Facades\Accordion::class,

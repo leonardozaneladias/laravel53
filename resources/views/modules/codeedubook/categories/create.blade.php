@@ -7,7 +7,7 @@
             <h3>Nova categorias</h3>
             {!! Form::open(['route' => 'categories.store', 'class' => 'form']) !!}
 
-            @include('categories._form')
+            @include('codeedubook::categories._form')
 
             {!! Html::openFormGroup() !!}
                 {!! Button::primary('Criar Categoria')->submit() !!}
