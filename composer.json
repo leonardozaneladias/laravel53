@@ -34,8 +34,7 @@
             "database"
         ],
         "psr-4": {
-            "CodePub\\": "app/",
-            "CodeEduBook\\": "Modules/CodeEduBook/"
+            "CodePub\\": "app/"
         }
     },
     "autoload-dev": {

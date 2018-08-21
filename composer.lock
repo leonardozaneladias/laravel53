@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "655b92e7de65fc169b91c7fd8bfeaf1c",
+    "content-hash": "1bc11426384c74f9eec4bfab89cdb023",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -961,6 +961,38 @@
                 "storage"
             ],
             "time": "2018-05-07T08:44:23+00:00"
+        },
+        {
+            "name": "leozdias/codeedubook",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leonardozaneladias/codeedubook.git",
+                "reference": "dbea69e36c0ea1c0189ec0d5e38b19b8680ed604"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leonardozaneladias/codeedubook/zipball/dbea69e36c0ea1c0189ec0d5e38b19b8680ed604",
+                "reference": "dbea69e36c0ea1c0189ec0d5e38b19b8680ed604",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodeEduBook\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leonardo Zanela",
+                    "email": "leonardozaneladias@gmail.com"
+                }
+            ],
+            "time": "2018-08-21T04:28:18+00:00"
         },
         {
             "name": "monolog/monolog",
