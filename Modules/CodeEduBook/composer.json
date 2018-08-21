@@ -1,0 +1,16 @@
+{
+    "name": "leozdias/codeedubook",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leonardo Zanela",
+            "email": "leonardozaneladias@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CodeEduBook\\": ""
+        }
+    }
+}
